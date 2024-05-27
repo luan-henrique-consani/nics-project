@@ -13,7 +13,7 @@ body{
     width: 1200px;
     height: 600px;
     grid-template-areas: 
-    "img cont";
+    "cont img";
 
 }
 
@@ -21,7 +21,7 @@ img{
     width: 600px;
     height: 600px;
     grid-area: img;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 0px 5px 5px 0px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
 }
@@ -32,7 +32,7 @@ img{
     background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px 0px 0px 5px;
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     display: flex;
@@ -50,7 +50,7 @@ img{
     font-family: 'Rubik',sans-serif;
     font-size: 32px;
     color: white;
-    margin: 0 0 37px 0 ;
+    margin: 0 0 90px 0 ;
 }
 .content div{
     width: 500px;
@@ -68,7 +68,7 @@ img{
     font-family: 'Rubik',sans-serif;
     font-size: 20px;
     color: white;
-
+    margin: none;
 }
 .content form{
     display: grid;
@@ -91,9 +91,12 @@ img{
     color: white;
     border: none;
     border-radius: 20px;
-    margin-bottom: 38px;
+    margin-bottom: 105px;
 }
 .content a{
     color: #413937;
     margin-bottom: 34px;
+}
+.content .email{
+    margin-bottom: 40px;
 }

@@ -34,4 +34,26 @@ quantidade int,
 variacao varchar(45),
 foreign key (fk_produtos) references produtos (id_produtos)
 );
+Insert into categorias(nome_categoria) values ('teclado'),('tenis');
+DELIMITER $$
+CREATE PROCEDURE INSERT_DOIS(IN nome_produtos VARCHAR(45),IN fk_categoria INT, IN preco DECIMAL, 
+IN quantidade INT, IN variacao VARCHAR(45))
+BEGIN
+INSERT INTO produtos (nome_produtos, fk_categoria, preco) VALUES ('tenis', 2, 444.99);
+
+set @id = (SELECT MAX(id_produtos) FROM produtos);
+
+INSERT INTO estoque (fk_produtos, quantidade, variacao) VALUES (@id, 45, 'azul');
+
+
+END$$
+DELIMITER ;
+drop procedure insert_dois;
+select * from produtos;
+select * from estoque;
+
+
+
+
+
 
