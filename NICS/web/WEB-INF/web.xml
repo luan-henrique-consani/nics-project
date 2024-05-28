@@ -20,9 +20,21 @@
         <servlet-name>LogarController</servlet-name>
         <servlet-class>controller.LogarController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HeaderController</servlet-name>
+        <servlet-class>controller.HeaderController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IndexController</servlet-name>
+        <servlet-class>controller.IndexController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastroProdutosController</servlet-name>
+        <servlet-class>controller.CadastroProdutosController</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.htm</url-pattern>
+        <servlet-name>IndexController</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastroController</servlet-name>
@@ -31,6 +43,14 @@
     <servlet-mapping>
         <servlet-name>LogarController</servlet-name>
         <url-pattern>/logar-usu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HeaderController</servlet-name>
+        <url-pattern>/HeaderController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastroProdutosController</servlet-name>
+        <url-pattern>/cad-prt</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
