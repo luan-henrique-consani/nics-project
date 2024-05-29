@@ -81,8 +81,8 @@ public class CadastroProdutosController extends HttpServlet {
         objProdutos.setNomeProdutos(request.getParameter("nome"));
         objProdutos.setCategoria(Integer.parseInt(request.getParameter("cat")));
         objProdutos.setImagem(imageBytes);
-        objEstoque.setQuantidade(Integer.parseInt(request.getParameter("qtd")));
         objProdutos.setPreco(Float.parseFloat(request.getParameter("preco")));
+        objEstoque.setQuantidade(Integer.parseInt(request.getParameter("qtd")));
         objEstoque.setVariacao(request.getParameter("var"));
         objProdutosDao.create(objProdutos, objEstoque);
         response.sendRedirect("./home");

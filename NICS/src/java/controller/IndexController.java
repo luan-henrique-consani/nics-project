@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DAO.CategoriaDAO;
+import model.DAO.ProdutosDAO;
 import model.bean.Categoria;
+import model.bean.Produtos;
 
 public class IndexController extends HttpServlet {
 
@@ -23,7 +25,10 @@ public class IndexController extends HttpServlet {
         CategoriaDAO categoria = new CategoriaDAO();
         List<Categoria> categorias = categoria.leia();
         request.setAttribute("categoria", categorias);
-        String nextPage = "/WEB-INF/jsp/index.jsp";
+        ProdutosDAO produto = new ProdutosDAO();
+        List<Produtos> produtos = produto.leia();
+        request.setAttribute("produto", produtos);
+                String nextPage = "/WEB-INF/jsp/index.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
     }

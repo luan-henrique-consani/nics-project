@@ -5,28 +5,38 @@
  */
 package model.bean;
 
+import java.util.Base64;
+
 /**
  *
  * @author Senai
  */
 public class Produtos {
+
     private int idProdutos;
     private int categoria;
     private String nomeProdutos;
     private byte[] imagem;
     private float preco;
-    private int quantidade;
 
     public Produtos() {
     }
 
-    public Produtos(int idProdutos, int categoria, String nomeProdutos, byte[] imagem, float preco, int quantidade) {
+    public String getImgBase64() {
+        if (imagem != null) {
+            return Base64.getEncoder().encodeToString(imagem);
+        } else {
+            return "";
+        }
+    }
+
+    public Produtos(int idProdutos, int categoria, String nomeProdutos, byte[] imagem, float preco) {
         this.idProdutos = idProdutos;
         this.categoria = categoria;
         this.nomeProdutos = nomeProdutos;
         this.imagem = imagem;
         this.preco = preco;
-        this.quantidade = quantidade;
+
     }
 
     public int getIdProdutos() {
@@ -69,13 +79,4 @@ public class Produtos {
         this.preco = preco;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-    
-    
 }
