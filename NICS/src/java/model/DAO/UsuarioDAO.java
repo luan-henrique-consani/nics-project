@@ -35,7 +35,7 @@ public class UsuarioDAO {
             rs = stmt.executeQuery();
             
             if(rs.next()){
-                Usuario.setIdUsuario(rs.getInt("idUsuario"));
+                Usuario.setIdUsuario(rs.getInt("id_usuario"));
                 System.out.println("DAO: "+Usuario.getIdUsuario());
             }
             
@@ -86,7 +86,7 @@ public class UsuarioDAO {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Usuario usu = new Usuario();
-                Usuario.setIdUsuario(rs.getInt("idUsuario"));
+                Usuario.setIdUsuario(rs.getInt("id_usuario"));
                 usu.setNome(rs.getString("nome"));
                 usu.setSenha(rs.getString("senha"));
                 usu.setTelefone(rs.getString("telefone"));

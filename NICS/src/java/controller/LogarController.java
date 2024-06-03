@@ -67,7 +67,7 @@ public class LogarController extends HttpServlet {
             usuarioDao.logar(usuario);
             if (Usuario.getIdUsuario() > 0) {
                 if (Usuario.getIdUsuario() == 1) {
-                    response.sendRedirect("./cadastroProdutos");
+                    response.sendRedirect("./cad-prt");
                 } else {
                     response.sendRedirect("redirect.jsp");
                 }

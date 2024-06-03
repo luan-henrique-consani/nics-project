@@ -55,7 +55,7 @@ public class ProdutosDAO {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Produtos prt = new Produtos();
-                prt.setIdProdutos(rs.getInt("id_produtos"));
+                prt.setIdProdutos(rs.getInt("id_produtos0"));
                 prt.setNomeProdutos(rs.getString("nome_produtos"));
                 prt.setCategoria(rs.getInt("fk_categoria"));
                 prt.setImagem(rs.getBytes("imagem"));

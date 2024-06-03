@@ -20,7 +20,7 @@
         <body>
             <header>
                 <div class="cima">
-                    <i class="fa-solid fa-house"></i>
+                    <a href="./home"><i class="fa-solid fa-house"></i></a> 
                     <h1>NICS</h1>
                     <div class="pesquisa">
                         <form action="achar" enctype="multipart/form-data" method="get">
@@ -28,7 +28,8 @@
                             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
-                    <a href="./cad-usu "><i class="fa-regular fa-user"></i></a>
+                    <a href="./carrinho"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="./cad-usu"><i class="fa-regular fa-user"></i></a>
                 </div>
                 <div class="baixo">
                     <ul>

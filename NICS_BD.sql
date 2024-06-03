@@ -2,13 +2,24 @@ create database NICS;
 
 use NICS;
 
+
+create table endereco(
+id_enderecos int auto_increment primary key,
+rua varchar(45),
+numero int(45),
+bairro varchar(45),
+estado varchar(45),
+cep varchar(9)
+);
 create table usuario(
 id_usuario int auto_increment primary key,
 nome varchar(45),
 senha varchar(45),
 email varchar(45),
 cpf varchar(14),
-telefone varchar(13)
+telefone varchar(13),
+fk_endereco int,
+foreign key (fk_endereco) references endereco (id_enderecos)  
 );
 
 create table categorias(
@@ -52,4 +63,24 @@ INSERT INTO estoque (fk_produtos, quantidade, variacao) VALUES (@id, quantidade,
 
 END$$
 DELIMITER ;
-select * from produtos;
+
+create table carrinho(
+id_carrinho int auto_increment primary key,
+fk_produto int,
+fk_usuario int,
+foreign key (fk_produto) references produtos (id_produtos),
+foreign key (fk_usuario) references usuario (id_usuario)
+);
+
+create table pedidos(
+id_pedidos int auto_increment primary key,
+valor decimal(10,2),
+fk_produto int,
+data_compra date,
+foreign key (fk_produto) references produtos (id_produtos)
+);
+
+insert into usuario(nome, senha, email, cpf ,telefone) values ('admin','Admin123','admin@gmail.com','123.123.123-12','43 98765-4321');
+
+select * from usuario;
+

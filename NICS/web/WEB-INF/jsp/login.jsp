@@ -38,6 +38,7 @@
                 <p class="levar">Você não tem uma conta?<a href="./cad-usu">Cadastrar</a></p>
             </div>
         </div>
+          <script src="https://kit.fontawesome.com/560340c572.js" crossorigin="anonymous"></script>
     </body>
 
     </html>

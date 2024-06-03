@@ -47,7 +47,7 @@
                     </div>
                     <input type="submit" value="Cadastrar-se" class="btn">
                 </form>
-                <p class="levar">Você já tem uma conta?<a href="./logar-usu">Cadastrar</a></p>
+                <p class="levar">Você já tem uma conta?<a href="./logar-usu">Logar</a></p>
             </div>
         </div>
         <script src="https://kit.fontawesome.com/560340c572.js" crossorigin="anonymous"></script>
