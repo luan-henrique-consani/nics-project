@@ -43,7 +43,7 @@ quantidade int,
 variacao varchar(45),
 foreign key (fk_produtos) references produtos (id_produtos)
 );
-Insert into categorias(nome_categoria) values('teclado'),('headset'),('earphone'),('microfone'),('smartwatch'),('cellphone');
+Insert into categorias(nome_categoria) values('teclado'),('headset'),('earphone'),('microfone'),('smartwatch'),('cellphone'),('mouse');
 DELIMITER $$
 CREATE PROCEDURE INSERT_DOIS(
 IN pr VARCHAR(45),
@@ -64,23 +64,27 @@ INSERT INTO estoque (fk_produtos, quantidade, variacao) VALUES (@id, quantidade,
 END$$
 DELIMITER ;
 
-create table carrinho(
-id_carrinho int auto_increment primary key,
-fk_produto int,
-fk_usuario int,
-foreign key (fk_produto) references produtos (id_produtos),
-foreign key (fk_usuario) references usuario (id_usuario)
+CREATE TABLE carrinho (
+    id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
+    fk_produto INT,
+    fk_usuario INT,
+    quantidade INT,
+    FOREIGN KEY (fk_produto) REFERENCES produtos (id_produtos),
+    FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario)
 );
 
-create table pedidos(
-id_pedidos int auto_increment primary key,
-valor decimal(10,2),
-fk_produto int,
-data_compra date,
-foreign key (fk_produto) references produtos (id_produtos)
+-- Recriar a tabela pedidos
+CREATE TABLE pedidos (
+    id_pedidos INT AUTO_INCREMENT PRIMARY KEY,
+    valor DECIMAL(10,2),
+    fk_usuario INT,
+    data_compra DATE,
+    FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario)
 );
+
 
 insert into usuario(nome, senha, email, cpf ,telefone) values ('admin','Admin123','admin@gmail.com','123.123.123-12','43 98765-4321');
 
 select * from usuario;
+
 

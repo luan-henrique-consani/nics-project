@@ -44,7 +44,8 @@ public class ProdutosDAO {
             e.printStackTrace();
         }
     }
-        public List<Produtos> leia() {
+
+    public List<Produtos> leia() {
         List<Produtos> produtos = new ArrayList<>();
         try {
             Connection conexao = Conexao.conectar();
@@ -55,7 +56,67 @@ public class ProdutosDAO {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 Produtos prt = new Produtos();
-                prt.setIdProdutos(rs.getInt("id_produtos0"));
+                prt.setIdProdutos(rs.getInt("id_produtos"));
+                prt.setNomeProdutos(rs.getString("nome_produtos"));
+                prt.setCategoria(rs.getInt("fk_categoria"));
+                prt.setImagem(rs.getBytes("imagem"));
+                prt.setPreco(rs.getFloat("preco"));
+                produtos.add(prt);
+            }
+
+            rs.close();
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return produtos;
+    }
+
+    public List<Produtos> leia2(int cate) {
+        List<Produtos> produtos = new ArrayList<>();
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            stmt = conexao.prepareStatement("SELECT * FROM produtos WHERE fk_categoria = ?");
+            stmt.setInt(1, cate);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Produtos prt = new Produtos();
+                prt.setIdProdutos(rs.getInt("id_produtos"));
+                prt.setNomeProdutos(rs.getString("nome_produtos"));
+                prt.setCategoria(rs.getInt("fk_categoria"));
+                prt.setImagem(rs.getBytes("imagem"));
+                prt.setPreco(rs.getFloat("preco"));
+                produtos.add(prt);
+            }
+
+            rs.close();
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return produtos;
+    }
+
+    public List<Produtos> leia3(int id) {
+        List<Produtos> produtos = new ArrayList<>();
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            stmt = conexao.prepareStatement("SELECT * FROM produtos WHERE id_produtos = ?");
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                Produtos prt = new Produtos();
+                prt.setIdProdutos(rs.getInt("id_produtos"));
                 prt.setNomeProdutos(rs.getString("nome_produtos"));
                 prt.setCategoria(rs.getInt("fk_categoria"));
                 prt.setImagem(rs.getBytes("imagem"));

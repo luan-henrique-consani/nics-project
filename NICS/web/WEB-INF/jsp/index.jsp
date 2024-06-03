@@ -11,8 +11,8 @@
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
                 integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
                 crossorigin="anonymous">
-            <link rel="stylesheet" href="styles/index.css">
             <jsp:include page="header.jsp"></jsp:include>
+            <link rel="stylesheet" href="styles/index.css">
         </head>
 
         <body>
@@ -41,10 +41,13 @@
                 <div class="container">
                     <c:forEach items="${produto}" var="produtos">
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="data:image/png;base64,${produtos.imgBase64}"
-                                alt="${produtos.nomeProdutos}">
+                            <div class="img-area">
+                                <img class="card-img-top" src="data:image/png;base64,${produtos.imgBase64}"
+                                    alt="${produtos.nomeProdutos}">
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title">${produtos.nomeProdutos}</h5>
+                                <p>R$ ${produtos.preco}</p>
                                 <a href="./produtoUni?id=${produtos.idProdutos}" class="btn btn-primary">Visitar</a>
                             </div>
                         </div>

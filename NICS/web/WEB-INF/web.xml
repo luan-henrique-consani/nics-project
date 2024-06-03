@@ -32,6 +32,14 @@
         <servlet-name>CadastroProdutosController</servlet-name>
         <servlet-class>controller.CadastroProdutosController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CategoriaController</servlet-name>
+        <servlet-class>controller.CategoriaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProdutoUnicoController</servlet-name>
+        <servlet-class>controller.ProdutoUnicoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -51,6 +59,14 @@
     <servlet-mapping>
         <servlet-name>CadastroProdutosController</servlet-name>
         <url-pattern>/cad-prt</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoriaController</servlet-name>
+        <url-pattern>/cate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoUnicoController</servlet-name>
+        <url-pattern>/produtoUni</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -33,13 +33,13 @@
                 </div>
                 <div class="redes">
                     <div>
-                        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://wa.me/5543991504447"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                     <div>
-                        <a href=""><i class="fa-brands fa-github"></i></a>
+                        <a href="https://github.com/luan-henrique-consani"><i class="fa-brands fa-github"></i></a>
                     </div>
                     <div>
-                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/luanconsani28/"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="texto2">

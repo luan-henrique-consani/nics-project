@@ -41,9 +41,9 @@ footer{
     color: #332A28;
 }
 footer p{
-    font-size: 20px;
-    color: #332A28;
-    font-family: 'Rubik',sans-serif;
+    font-size: 20px !important;
+    color: #332A28 !important;
+    font-family: 'Rubik',sans-serif !important;
 }
 footer .copy{
     margin-top: 55px;
