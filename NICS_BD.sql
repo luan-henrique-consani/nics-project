@@ -97,7 +97,7 @@ SELECT
 FROM
     carrinho c
     INNER JOIN usuario u ON c.fk_usuario = u.id_usuario
-    INNER JOIN produtos p ON c.fk_produto = p.id_produtos where u.id_usuario = 3;
+    INNER JOIN produtos p ON c.fk_produto = p.id_produtos where u.id_usuario = 2;
 
 
 SELECT
@@ -115,8 +115,12 @@ FROM
 
 select * from usuario;
 
+select * from produtos;
+
+select * from estoque;
+
+SELECT * FROM usuario WHERE id_usuario = 2;
+select * from carrinho;
 
 drop table pedidos;
 drop database nics;
-
-

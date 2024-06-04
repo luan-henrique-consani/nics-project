@@ -48,10 +48,12 @@
                             <div class="card-body">
                                 <h5 class="card-title">${produtos.nomeProdutos}</h5>
                                 <p>R$ ${produtos.preco}</p>
+
                                 <a href="./produtoUni?id=${produtos.idProdutos}" class="btn btn-primary">Visitar</a>
                             </div>
                         </div>
                     </c:forEach>
+                     <span>${usuario.nome}</span>
                 </div>
 
 

@@ -32,6 +32,16 @@ public class LogarController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nextPage = "/WEB-INF/jsp/login.jsp";
+        Usuario usuario = new Usuario();
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("loginManter")) {
+
+                usuario = usuarioDao.leia(Integer.parseInt(cookie.getValue()));
+                request.setAttribute("usuario", usuario);
+            }
+        }
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
@@ -67,21 +77,23 @@ public class LogarController extends HttpServlet {
             out.println("</script>");
         } else {
 
-            usuarioDao.logar(usuario);
-            if (usuario.getIdUsuario() > 0) {
-                if (usuario.getIdUsuario() == 1) {
+            int idUsuario = usuarioDao.logar(usuario);
+            if (idUsuario > 0) {
+                Cookie servilet = new Cookie("loginManter", Integer.toString(idUsuario));
+                response.addCookie(servilet);
+                if (idUsuario == 1) {
                     response.sendRedirect("./cad-prt");
                 } else {
 
-                        response.sendRedirect("redirect.jsp");
-                    }
-                }else {
+                    response.sendRedirect("redirect.jsp");
+                }
+            } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Por favor, faça o cadastro.');");
                 out.println("window.location.href = './logar-usu';");
                 out.println("</script>");
             }
-            }
-
         }
+
     }
+}

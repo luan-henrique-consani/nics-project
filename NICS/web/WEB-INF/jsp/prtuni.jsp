@@ -25,10 +25,10 @@
                     <div class="card-body">
                         <h5 class="card-title">${produtos.nomeProdutos}</h5>
                         <p>R$ ${produtos.preco}</p>
-                        <p>${usuario}</p>
+                        <p>${usuario.nome}</p>
                         <form action="colocar-carrinho" enctype="multipart/form-data" method="post">
                             <input type="hidden" name="fk_produto" id="fk_produto" value="${produtos.idProdutos}">
-                            <input type="hidden" name="fk_usuario" id="fk_usuario" value="${usuario}">
+                            <input type="hidden" name="fk_usuario" id="fk_usuario" value="${usuario.idUsuario}">
                             <input type="number" name="quantidade" id="quantidade">
                             <button type="submit" class="btn"><i class="fa-solid fa-cart-shopping"></i>Comprar</a></button>
                         </form>
