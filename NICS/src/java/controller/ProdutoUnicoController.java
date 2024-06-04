@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import model.DAO.CategoriaDAO;
 import model.DAO.ProdutosDAO;
 import model.bean.Categoria;
 import model.bean.Produtos;
+import model.bean.Usuario;
 
 /**
  *
@@ -34,6 +36,12 @@ public class ProdutoUnicoController extends HttpServlet {
         List<Produtos> produtos = produto.leia3(id);
         request.setAttribute("produto", produtos);
         String nextPage = "/WEB-INF/jsp/prtuni.jsp";
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("usuario")) {
+                System.out.println(cookie.getValue());
+            }
+        }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
 

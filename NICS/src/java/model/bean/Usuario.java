@@ -10,7 +10,7 @@ package model.bean;
  * @author Senai
  */
 public class Usuario {
-    private static int idUsuario;
+    private  int idUsuario;
     private String nome;
     private String senha;
     private String email;
@@ -20,20 +20,22 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nome, String senha, String email, String cpf, String telefone) {
+    public Usuario(int idUsuario, String nome, String senha, String email, String cpf, String telefone) {
+        this.idUsuario = idUsuario;
         this.nome = nome;
         this.senha = senha;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
     }
+    
 
-    public static int getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public static void setIdUsuario(int idUsuario) {
-        Usuario.idUsuario = idUsuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNome() {
@@ -75,7 +77,8 @@ public class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
+
+   
     
     
 }

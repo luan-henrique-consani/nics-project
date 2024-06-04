@@ -44,6 +44,7 @@ variacao varchar(45),
 foreign key (fk_produtos) references produtos (id_produtos)
 );
 Insert into categorias(nome_categoria) values('teclado'),('headset'),('earphone'),('microfone'),('smartwatch'),('cellphone'),('mouse');
+insert into usuario(nome, senha, email, cpf ,telefone) values ('admin','Admin123','admin@gmail.com','123.123.123-12','43 98765-4321');
 DELIMITER $$
 CREATE PROCEDURE INSERT_DOIS(
 IN pr VARCHAR(45),
@@ -73,18 +74,49 @@ CREATE TABLE carrinho (
     FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario)
 );
 
--- Recriar a tabela pedidos
+
 CREATE TABLE pedidos (
     id_pedidos INT AUTO_INCREMENT PRIMARY KEY,
     valor DECIMAL(10,2),
     fk_usuario INT,
-    data_compra DATE,
-    FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario)
+    fk_produtos INT,
+    data_compra DATETIME,
+    FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario),
+    FOREIGN KEY (fk_produtos) REFERENCES produtos (id_produtos)
 );
 
+INSERT INTO carrinho (fk_produto, fk_usuario, quantidade) VALUES (2, 3, 2);
+INSERT INTO pedidos (valor, fk_usuario, fk_produtos,data_compra) VALUES (400, 3, 2, now());
 
-insert into usuario(nome, senha, email, cpf ,telefone) values ('admin','Admin123','admin@gmail.com','123.123.123-12','43 98765-4321');
+SELECT
+    c.id_carrinho,
+    u.nome AS usuario_nome,
+    p.nome_produtos AS produto_nome,
+    p.imagem,
+    c.quantidade
+FROM
+    carrinho c
+    INNER JOIN usuario u ON c.fk_usuario = u.id_usuario
+    INNER JOIN produtos p ON c.fk_produto = p.id_produtos where u.id_usuario = 3;
+
+
+SELECT
+    pe.id_pedidos,
+    u.nome AS usuario_nome,
+	p.imagem,
+    pe.valor,
+    pe.data_compra
+FROM
+    pedidos pe
+    INNER JOIN usuario u ON pe.fk_usuario = u.id_usuario
+	INNER JOIN produtos p ON pe.fk_produto = p.id_produtos  where u.id_usuario = 2;
+
+
 
 select * from usuario;
+
+
+drop table pedidos;
+drop database nics;
 
 

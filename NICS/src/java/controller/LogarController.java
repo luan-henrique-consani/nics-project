@@ -11,6 +11,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,7 @@ public class LogarController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nextPage = "/WEB-INF/jsp/login.jsp";
+
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
     }
@@ -64,20 +66,22 @@ public class LogarController extends HttpServlet {
             out.println("window.location.href = './log-usu';");
             out.println("</script>");
         } else {
+
             usuarioDao.logar(usuario);
-            if (Usuario.getIdUsuario() > 0) {
-                if (Usuario.getIdUsuario() == 1) {
+            if (usuario.getIdUsuario() > 0) {
+                if (usuario.getIdUsuario() == 1) {
                     response.sendRedirect("./cad-prt");
                 } else {
-                    response.sendRedirect("redirect.jsp");
-                }
-            } else {
+
+                        response.sendRedirect("redirect.jsp");
+                    }
+                }else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Por favor, faça o cadastro.');");
                 out.println("window.location.href = './logar-usu';");
                 out.println("</script>");
             }
-        }
+            }
 
+        }
     }
-}

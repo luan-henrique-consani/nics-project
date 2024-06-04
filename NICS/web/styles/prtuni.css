@@ -46,7 +46,7 @@ img{
     height: 600px!important;
     width: 600px!important;
 }
-.btn{
+form .btn{
     width: 203px!important;
     height: 38px!important;
     background-color: #413937!important;
@@ -54,6 +54,7 @@ img{
     outline: none!important;
     border-color: #413937!important;
     border-radius: 20px!important;
+    color: white !important;
 }
 .btn:hover{
     background-color: #302725!important;
