@@ -85,7 +85,7 @@ public class CadastroProdutosController extends HttpServlet {
         objEstoque.setQuantidade(Integer.parseInt(request.getParameter("qtd")));
         objEstoque.setVariacao(request.getParameter("var"));
         objProdutosDao.create(objProdutos, objEstoque);
-        response.sendRedirect("./home");
+        response.sendRedirect("./cad-prt");
         
 
     }

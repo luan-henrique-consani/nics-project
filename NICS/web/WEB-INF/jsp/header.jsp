@@ -23,7 +23,7 @@
                     <a href="./home"><i class="fa-solid fa-house"></i></a> 
                     <h1>NICS</h1>
                     <div class="pesquisa">
-                        <form action="achar" enctype="multipart/form-data" method="get">
+                        <form action="achar" enctype="multipart/form-data" method="post">
                             <input type="text" name="pesquisar" id="pesquisar" placeholder="Pesquise aqui...">
                             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>

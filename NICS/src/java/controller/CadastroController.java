@@ -73,7 +73,7 @@ public class CadastroController extends HttpServlet {
             out.println("</script>");
         } else {
             usuarioDao.create(usuario);
-            response.sendRedirect("redirect.jsp");
+            response.sendRedirect("./logar-usu");
         }
 
     }

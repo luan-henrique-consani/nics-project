@@ -12,29 +12,26 @@
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
               crossorigin="anonymous">
         <jsp:include page="header.jsp"></jsp:include>
-            <link rel="stylesheet" href="styles/prtuni.css">
+            <link rel="stylesheet" href="styles/index.css">
         </head>
 
         <body>
         <main>
             <div class="container">
-            <c:forEach items="${produto}" var="produtos">
-                <img class="card-img-top" src="data:image/png;base64,${produtos.imgBase64}"
-                alt="${produtos.nomeProdutos}">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${produtos.nomeProdutos}</h5>
-                        <p>R$ ${produtos.preco}</p>
-                        <form action="colocar-carrinho" enctype="multipart/form-data" method="post">
-                            <input type="hidden" name="fk_produto" id="fk_produto" value="${produtos.idProdutos}">
-                            <input type="hidden" name="fk_usuario" id="fk_usuario" value="${usuario.idUsuario}">
-                            <input type="number" name="quantidade" id="quantidade">
-                            <button type="submit" class="btn"><i class="fa-solid fa-cart-shopping"></i>Comprar</a></button>
-                        </form>
+                <c:forEach items="${produto}" var="produtos">
+                    <div class="card" style="width: 18rem;">
+                        <div class="img-area">
+                            <img class="card-img-top" src="data:image/png;base64,${produtos.imgBase64}"
+                                alt="${produtos.nomeProdutos}">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${produtos.nomeProdutos}</h5>
+                            <p>R$ ${produtos.preco}</p>
+                            <a href="./produtoUni?id=${produtos.idProdutos}" class="btn btn-primary">Visitar</a>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
-        </div>
+                </c:forEach>
+            </div>
 
 
     </main>

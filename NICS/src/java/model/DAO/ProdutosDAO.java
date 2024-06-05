@@ -133,4 +133,34 @@ public class ProdutosDAO {
         }
         return produtos;
     }
+
+    public List<Produtos> leia4(String pesquisar) {
+        List<Produtos> produtos = new ArrayList<>();
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            stmt = conexao.prepareStatement("SELECT * FROM produtos WHERE nome_produtos LIKE ?");
+            stmt.setString(1, "%"+pesquisar+"%");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Produtos prt = new Produtos();
+                prt.setIdProdutos(rs.getInt("id_produtos"));
+                prt.setNomeProdutos(rs.getString("nome_produtos"));
+                prt.setCategoria(rs.getInt("fk_categoria"));
+                prt.setImagem(rs.getBytes("imagem"));
+                prt.setPreco(rs.getFloat("preco"));
+                produtos.add(prt);
+            }
+
+            rs.close();
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return produtos;
+    }
 }
