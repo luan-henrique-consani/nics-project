@@ -40,6 +40,10 @@
         <servlet-name>ProdutoUnicoController</servlet-name>
         <servlet-class>controller.ProdutoUnicoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CarrinhoController</servlet-name>
+        <servlet-class>controller.CarrinhoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -67,6 +71,10 @@
     <servlet-mapping>
         <servlet-name>ProdutoUnicoController</servlet-name>
         <url-pattern>/produtoUni</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarrinhoController</servlet-name>
+        <url-pattern>/carrinho</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </c:forEach>
-                     <span>${usuario.nome}</span>
+
                 </div>
 
 

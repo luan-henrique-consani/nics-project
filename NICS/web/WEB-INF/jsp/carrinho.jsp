@@ -12,31 +12,31 @@
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
               crossorigin="anonymous">
         <jsp:include page="header.jsp"></jsp:include>
-            <link rel="stylesheet" href="styles/prtuni.css">
+            <link rel="stylesheet" href="styles/carrinho.css">
         </head>
 
         <body>
         <main>
+            <div class="content">
             <div class="container">
-            <c:forEach items="${produto}" var="produtos">
-                <img class="card-img-top" src="data:image/png;base64,${produtos.imgBase64}"
-                alt="${produtos.nomeProdutos}">
-                <div class="card">
+            <c:forEach items="${carrinho}" var="carrinhos">
+                <div class="card" style="width: 18rem;">
+                    <div class="img-area">
+                        <img class="card-img-top" src="data:image/png;base64,${carrinhos.imgBase64}"
+                             alt="${carrinhos.nomeProdutos}">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">${produtos.nomeProdutos}</h5>
-                        <p>R$ ${produtos.preco}</p>
-                        <form action="colocar-carrinho" enctype="multipart/form-data" method="post">
-                            <input type="hidden" name="fk_produto" id="fk_produto" value="${produtos.idProdutos}">
-                            <input type="hidden" name="preco" id="preco" value="${produtos.preco}">
-                            <input type="hidden" name="fk_usuario" id="fk_usuario" value="${usuario.idUsuario}">
-                                        <c:forEach items="${estoque}" var="estoques">
-                            <input type="number" name="quantidade" id="quantidade" value="1" max="${estoques.quantidade}">
-                                        </c:forEach>
-                            <button type="submit" class="btn"><i class="fa-solid fa-cart-shopping"></i>Comprar</a></button>
-                        </form>
+                        <h5 class="card-title">${carrinhos.nomeProdutos} x${carrinhos.quantidade}</h5>
+                        <p>R$ ${carrinhos.preco}</p>
                     </div>
                 </div>
             </c:forEach>
+
+        </div>
+        <c:forEach items="${carrinho2}" var="carrinhos">
+            <h3>Total: R$ ${carrinhos.preco}
+            </c:forEach>
+            <a href=""><button class="btn">Finalizar compra!</button></a>
         </div>
 
 

@@ -28,7 +28,7 @@
                             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
-                    <a href="./carrinho"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="./carrinho?id=${usuario.idUsuario}"><i class="fa-solid fa-cart-shopping"></i></a>
                     <a href="./cad-usu"><i class="fa-regular fa-user"></i></a>
                 </div>
                 <div class="baixo">

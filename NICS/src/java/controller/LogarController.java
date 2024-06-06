@@ -90,7 +90,7 @@ public class LogarController extends HttpServlet {
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Por favor, faça o cadastro.');");
-                out.println("window.location.href = './logar-usu';");
+                out.println("window.location.href = './cad-usu';");
                 out.println("</script>");
             }
         }

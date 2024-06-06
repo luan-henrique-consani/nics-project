@@ -18,10 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.DAO.CarrinhoDAO;
 import model.DAO.CategoriaDAO;
+import model.DAO.EstoqueDAO;
 import model.DAO.ProdutosDAO;
 import model.DAO.UsuarioDAO;
 import model.bean.Carrinho;
 import model.bean.Categoria;
+import model.bean.Estoque;
 import model.bean.Produtos;
 import model.bean.Usuario;
 
@@ -42,6 +44,9 @@ public class ProdutoUnicoController extends HttpServlet {
         ProdutosDAO produto = new ProdutosDAO();
         List<Produtos> produtos = produto.leia3(id);
         request.setAttribute("produto", produtos);
+        EstoqueDAO estoque = new EstoqueDAO();
+        List<Estoque> estoques = estoque.leia();
+        request.setAttribute("estoque", estoques);
         String nextPage = "/WEB-INF/jsp/prtuni.jsp";
         Usuario usuario = new Usuario();
         UsuarioDAO usuarioDao = new UsuarioDAO();
@@ -80,11 +85,25 @@ public class ProdutoUnicoController extends HttpServlet {
         PrintWriter out = response.getWriter();
         Carrinho carrinho = new Carrinho();
         CarrinhoDAO carrinhoDao = new CarrinhoDAO();
-        carrinho.setFkProduto(Integer.parseInt(request.getParameter("fk_produto")));
-        carrinho.setFkUsuario(Integer.parseInt(request.getParameter("fk_usuario")));
-        carrinho.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
-        carrinhoDao.create(carrinho);
-        response.sendRedirect("./home");
+        String id = request.getParameter("fk_usuario");
+        System.out.println(id);
+        if (id.trim().equals("")) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Por favor, faça o login.');");
+            out.println("window.location.href = './logar-usu';");
+            out.println("</script>");
+
+        } else {
+            int id2 = Integer.parseInt(id);
+            if (id2 > 0) {
+                carrinho.setFkProduto(Integer.parseInt(request.getParameter("fk_produto")));
+                carrinho.setFkUsuario(Integer.parseInt(request.getParameter("fk_usuario")));
+                carrinho.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+                carrinho.setPreco(Float.parseFloat(request.getParameter("preco")));
+                carrinhoDao.create(carrinho);
+                response.sendRedirect("./home");
+            }
+        }
 
     }
 

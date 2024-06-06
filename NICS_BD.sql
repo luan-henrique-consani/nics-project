@@ -70,6 +70,7 @@ CREATE TABLE carrinho (
     fk_produto INT,
     fk_usuario INT,
     quantidade INT,
+    preco DECIMAL(10,2),
     FOREIGN KEY (fk_produto) REFERENCES produtos (id_produtos),
     FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario)
 );
@@ -80,12 +81,14 @@ CREATE TABLE pedidos (
     valor DECIMAL(10,2),
     fk_usuario INT,
     fk_produtos INT,
+    fk_enderecos INT,
     data_compra DATETIME,
+    FOREIGN KEY (fk_enderecos) REFERENCES endereco (id_enderecos),
     FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario),
     FOREIGN KEY (fk_produtos) REFERENCES produtos (id_produtos)
 );
 
-INSERT INTO carrinho (fk_produto, fk_usuario, quantidade) VALUES (2, 3, 2);
+INSERT INTO carrinho (fk_produto, fk_usuario, quantidade, preco) VALUES (2, 3, 2, 400);
 INSERT INTO pedidos (valor, fk_usuario, fk_produtos,data_compra) VALUES (400, 3, 2, now());
 
 SELECT
@@ -93,7 +96,8 @@ SELECT
     u.nome AS usuario_nome,
     p.nome_produtos AS produto_nome,
     p.imagem,
-    c.quantidade
+    c.quantidade,
+    c.preco
 FROM
     carrinho c
     INNER JOIN usuario u ON c.fk_usuario = u.id_usuario
@@ -105,14 +109,17 @@ SELECT
     u.nome AS usuario_nome,
 	p.imagem,
     pe.valor,
-    pe.data_compra
+    pe.data_compra,
+    e.rua,
+    e.numero
 FROM
     pedidos pe
     INNER JOIN usuario u ON pe.fk_usuario = u.id_usuario
+    INNER JOIN endereco e ON pe.fk_enderecos = e.id_enderecos
 	INNER JOIN produtos p ON pe.fk_produto = p.id_produtos  where u.id_usuario = 2;
 
 
-
+SELECT SUM(p.preco * c.quantidade) AS total FROM produtos p INNER JOIN carrinho c ON p.id_produtos = c.fk_produto INNER JOIN usuario u ON c.fk_usuario = u.id_usuario where u.id_usuario = 2;
 select * from usuario;
 
 select * from produtos;

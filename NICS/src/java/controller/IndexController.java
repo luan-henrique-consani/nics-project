@@ -71,6 +71,9 @@ public class IndexController extends HttpServlet {
 
     protected void achar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        CategoriaDAO categoria = new CategoriaDAO();
+        List<Categoria> categorias = categoria.leia();
+        request.setAttribute("categoria", categorias);
         String pesquisar = request.getParameter("pesquisar");
         System.out.println(request.getParameter("pesquisar"));
         ProdutosDAO produto = new ProdutosDAO();

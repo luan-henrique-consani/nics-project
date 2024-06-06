@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #D9D9D9;
+}
+
+.carousel {
+    width: 70% !important;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 0px !important;
+}
+
+main {
+    width: 100%;
+    height: 200vh;
+    display: grid !important;
+    justify-items: center;
+}
+
+.container {
+    display: flex !important;
+    margin-top: 20px !important;
+    gap: 30px !important;
+    height: 427px !important;
+    flex-wrap: wrap !important;
+    align-content: baseline !important;
+    max-width: 955px !important;
+    justify-content: flex-start;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+p {
+    color: #e9e9e9 !important;
+    font-size: 25px !important;
+    font-family: 'Rubik', sans-serif;
+}
+
+.card {
+    align-items: center;
+    background: linear-gradient(135deg, rgb(0 0 0 / 10%), rgb(0 0 0 / 11%)) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 0px 0px 0px 0px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+    height: 122px !important;
+    width: 785px !important;
+    display: flex;
+    flex-direction: row !important;
+}
+
+.card .img-area {
+    height: 122px !important;
+    width: 392px !important;
+    background-color: #332A28;
+    display: flex;
+    justify-content: center;
+}
+
+.card .img-area img {
+    height: 122px !important;
+    width: 122px !important;
+}
+
+.btn {
+    width: 203px !important;
+    height: 38px !important;
+    background-color: #413937 !important;
+    font-family: 'Rubik', sans-serif !important;
+    outline: none !important;
+    border-color: #413937 !important;
+    border-radius: 20px !important;
+    color: white !important;
+}
+
+.btn:hover {
+    background-color: #302725 !important;
+    border-color: #302725 !important;
+}
+
+.card-body {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 3px;
+    align-items: center !important;
+}
+
+.card-body h5 {
+    color: #e9e9e9 !important;
+    font-size: 25px !important;
+    font-family: 'Rubik', sans-serif;
+    text-align: left;
+    width: 268px;
+}
+
+::-webkit-scrollbar {
+    width: 8px; 
+}
+
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5; 
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #424242; 
+    border-radius: 20px; 
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #424242; 
+}
+
+
