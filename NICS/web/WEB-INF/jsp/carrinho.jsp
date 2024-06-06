@@ -36,7 +36,13 @@
         <c:forEach items="${carrinho2}" var="carrinhos">
             <h3>Total: R$ ${carrinhos.preco}
             </c:forEach>
-            <a href=""><button class="btn">Finalizar compra!</button></a>
+            <c:forEach items="${carrinho2}" var="carrinhos">
+            <form action="cad-pedi" enctype="multipart/form-data" method="post">
+                <button type="submit" class="btn">Finalizar compra!</button>
+            </form>
+        </c:forEach>
+                
+
         </div>
 
 

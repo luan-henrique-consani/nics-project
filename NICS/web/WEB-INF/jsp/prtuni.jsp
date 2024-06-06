@@ -30,7 +30,7 @@
                             <input type="hidden" name="preco" id="preco" value="${produtos.preco}">
                             <input type="hidden" name="fk_usuario" id="fk_usuario" value="${usuario.idUsuario}">
                                         <c:forEach items="${estoque}" var="estoques">
-                            <input type="number" name="quantidade" id="quantidade" value="1" max="${estoques.quantidade}">
+                            <input type="number" name="quantidade" id="quantidade" value="1" min="1" max="${estoques.quantidade}">
                                         </c:forEach>
                             <button type="submit" class="btn"><i class="fa-solid fa-cart-shopping"></i>Comprar</a></button>
                         </form>

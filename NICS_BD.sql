@@ -118,13 +118,35 @@ FROM
     INNER JOIN endereco e ON pe.fk_enderecos = e.id_enderecos
 	INNER JOIN produtos p ON pe.fk_produto = p.id_produtos  where u.id_usuario = 2;
 
+select * from usuario;
+
+
+DELIMITER $$
+CREATE PROCEDURE enderecos(
+IN rua varchar(45),
+IN numero int(45),
+IN bairro varchar(45),
+IN estado varchar(45),
+IN cep varchar(9)
+)
+BEGIN
+INSERT INTO endereco (rua, numero, bairro, estado, cep) VALUES (rua, numero, bairro, estado,cep);
+
+set @id = (SELECT MAX(id_enderecos) FROM endereco);
+
+UPDATE usuario SET fk_endereco = @id WHERE id_usuario = @id;
+
+END$$
+DELIMITER ;
+
+call enderecos('a',2,'a','a','q');
 
 SELECT SUM(p.preco * c.quantidade) AS total FROM produtos p INNER JOIN carrinho c ON p.id_produtos = c.fk_produto INNER JOIN usuario u ON c.fk_usuario = u.id_usuario where u.id_usuario = 2;
 select * from usuario;
 
 select * from produtos;
 
-select * from estoque;
+select * from endereco;
 
 SELECT * FROM usuario WHERE id_usuario = 2;
 select * from carrinho;
