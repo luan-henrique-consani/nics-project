@@ -2,6 +2,14 @@ create database NICS;
 
 use NICS;
 
+create table usuario(
+id_usuario int auto_increment primary key,
+nome varchar(45),
+senha varchar(45),
+email varchar(45),
+cpf varchar(14),
+telefone varchar(13)
+);
 
 create table endereco(
 id_enderecos int auto_increment primary key,
@@ -9,17 +17,9 @@ rua varchar(45),
 numero int(45),
 bairro varchar(45),
 estado varchar(45),
-cep varchar(9)
-);
-create table usuario(
-id_usuario int auto_increment primary key,
-nome varchar(45),
-senha varchar(45),
-email varchar(45),
-cpf varchar(14),
-telefone varchar(13),
-fk_endereco int,
-foreign key (fk_endereco) references endereco (id_enderecos)  
+cep varchar(9),
+fk_usuario int,
+foreign key (fk_usuario) references usuario (id_usuario)  
 );
 
 create table categorias(
@@ -127,10 +127,11 @@ IN rua varchar(45),
 IN numero int(45),
 IN bairro varchar(45),
 IN estado varchar(45),
-IN cep varchar(9)
+IN cep varchar(9),
+IN fk_usuario int
 )
 BEGIN
-INSERT INTO endereco (rua, numero, bairro, estado, cep) VALUES (rua, numero, bairro, estado,cep);
+INSERT INTO endereco (rua, numero, bairro, estado, cep, fk_usuario) VALUES (rua, numero, bairro, estado,cep,fk_usuario);
 
 set @id = (SELECT MAX(id_enderecos) FROM endereco);
 
@@ -139,7 +140,7 @@ UPDATE usuario SET fk_endereco = @id WHERE id_usuario = @id;
 END$$
 DELIMITER ;
 
-call enderecos('a',2,'a','a','q');
+call enderecos('Rua Vitório Marandola',88,'H.U','Paraná','86000-000');
 
 SELECT SUM(p.preco * c.quantidade) AS total FROM produtos p INNER JOIN carrinho c ON p.id_produtos = c.fk_produto INNER JOIN usuario u ON c.fk_usuario = u.id_usuario where u.id_usuario = 2;
 select * from usuario;
