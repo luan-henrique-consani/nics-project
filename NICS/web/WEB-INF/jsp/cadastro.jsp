@@ -39,11 +39,11 @@
                     </div>
                     <div class="cpf">
                         <i class="fa-solid fa-id-card"></i>
-                        <input type="text" placeholder="000.000.000-00" name="cpf">
+                        <input type="text" placeholder="000.000.000-00" name="cpf" id="cpf">
                     </div>
                     <div class="telefone">
                         <i class="fa-solid fa-phone"></i>
-                        <input type="text" placeholder="00 00000-0000" name="telefone">
+                        <input type="text" placeholder="00 00000-0000" name="telefone" id="telefone" pattern="[0-9].{2} [0-9].{5}-[0-9].{4}">
                     </div>
                     <input type="submit" value="Cadastrar-se" class="btn">
                 </form>
@@ -51,6 +51,9 @@
             </div>
         </div>
         <script src="https://kit.fontawesome.com/560340c572.js" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="js/mask.js"></script>
     </body>
 
     </html>
