@@ -93,6 +93,7 @@ public class ProdutoUnicoController extends HttpServlet {
             out.println("window.location.href = './logar-usu';");
             out.println("</script>");
 
+
         } else {
             int id2 = Integer.parseInt(id);
             if (id2 > 0) {

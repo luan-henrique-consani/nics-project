@@ -37,6 +37,8 @@
                 </c:forEach>
             </select>
             <input type="submit" value="Enviar">
+            
+            <a href="./home">home</a>
         </form>    
     </body>
 </html>

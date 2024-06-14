@@ -67,16 +67,31 @@ public class LogarController extends HttpServlet {
 
     protected void logar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         usuario.setEmail(request.getParameter("email"));
         usuario.setSenha(request.getParameter("senha"));
+
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Login</title>");
+        out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
+        out.println("<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>");
+        out.println("<link rel=\"stylesheet\" href=\"styles/login.css\">");
+        out.println("</head>");
+        out.println("<body>");
+
         if (usuario.getEmail().trim().equals("") || usuario.getSenha().trim().equals("")) {
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Por favor, preencha todos os campos.');");
-            out.println("window.location.href = './log-usu';");
+            out.println("<script>");
+            out.println("Swal.fire({");
+            out.println("icon: 'error',");
+            out.println("title: 'Opa...',");
+            out.println("text: 'Por favor, preencha todos os campos!'");
+            out.println("}).then(() => {");
+            out.println("window.location.href = './logar-usu';");
+            out.println("});");
             out.println("</script>");
         } else {
-
             int idUsuario = usuarioDao.logar(usuario);
             if (idUsuario > 0) {
                 Cookie servilet = new Cookie("loginManter", Integer.toString(idUsuario));
@@ -84,16 +99,23 @@ public class LogarController extends HttpServlet {
                 if (idUsuario == 1) {
                     response.sendRedirect("./cad-prt");
                 } else {
-
                     response.sendRedirect("redirect.jsp");
                 }
             } else {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Por favor, faça o cadastro.');");
-                out.println("window.location.href = './cad-usu';");
-                out.println("</script>");
+            out.println("<script>");
+            out.println("Swal.fire({");
+            out.println("icon: 'error',");
+            out.println("title: 'Opa...',");
+            out.println("text: 'Por favor, faça o cadastro!'");
+            out.println("}).then(() => {");
+            out.println("window.location.href = './cad-usu';");
+            out.println("});");
+            out.println("</script>");
             }
         }
 
+        out.println("</body>");
+        out.println("</html>");
     }
+
 }

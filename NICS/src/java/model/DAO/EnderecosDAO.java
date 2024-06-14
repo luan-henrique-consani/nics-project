@@ -8,7 +8,10 @@ package model.DAO;
 import conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.bean.Enderecos;
 
 /**
@@ -16,7 +19,8 @@ import model.bean.Enderecos;
  * @author Luan
  */
 public class EnderecosDAO {
-        public void create(Enderecos endereco) {
+
+    public void create(Enderecos endereco) {
         try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -29,7 +33,6 @@ public class EnderecosDAO {
             stmt.setString(5, endereco.getCep());
             stmt.executeUpdate();
 
-
             stmt.close();
             conexao.close();
             System.out.println("deu certo");
@@ -38,5 +41,26 @@ public class EnderecosDAO {
             e.printStackTrace();
         }
     }
-    
+
+    public int achar(Enderecos enderecos) {
+        int idEnderecos = 0;
+        try{
+            Connection con = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            
+            stmt = con.prepareStatement("SELECT  id_endereco WHERE id_endereco = ?");
+            stmt.setInt(1, enderecos.getIdEnderecos());
+            rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                idEnderecos = rs.getInt("id_endereco");
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return idEnderecos;
+    }
+
 }

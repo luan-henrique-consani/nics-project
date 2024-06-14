@@ -8,7 +8,7 @@ nome varchar(45),
 senha varchar(45),
 email varchar(45),
 cpf varchar(14),
-telefone varchar(14)
+telefone varchar(15)
 );
 
 create table endereco(
@@ -44,7 +44,7 @@ variacao varchar(45),
 foreign key (fk_produtos) references produtos (id_produtos)
 );
 Insert into categorias(nome_categoria) values('teclado'),('headset'),('earphone'),('microfone'),('smartwatch'),('cellphone'),('mouse');
-insert into usuario(nome, senha, email, cpf ,telefone) values ('admin','Admin123','admin@gmail.com','123.123.123-12','43 98765-4321');
+insert into usuario(nome, senha, email, cpf ,telefone) values ('admin','Admin123','admin@gmail.com','123.123.123-12','(43) 98765-4321');
 DELIMITER $$
 CREATE PROCEDURE INSERT_DOIS(
 IN pr VARCHAR(45),
@@ -61,6 +61,7 @@ set @id = (SELECT MAX(id_produtos) FROM produtos);
 
 INSERT INTO estoque (fk_produtos, quantidade, variacao) VALUES (@id, quantidade, variacao);
 
+select * from usuario;
 
 END$$
 DELIMITER ;
@@ -101,11 +102,3 @@ FROM
     INNER JOIN usuario u ON pe.fk_usuario = u.id_usuario
     INNER JOIN endereco e ON pe.fk_enderecos = e.id_enderecos
 	INNER JOIN produtos p ON pe.fk_produto = p.id_produtos  where u.id_usuario = 2;
-    
-drop table usuario;
-select * from usuario;
-
-alter table usuario modify telefone varchar(15);
-
-desc usuario;
-delete from usuario where id_usuario > 1;

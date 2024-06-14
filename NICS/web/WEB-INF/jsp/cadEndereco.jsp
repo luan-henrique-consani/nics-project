@@ -9,26 +9,26 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
-        <form action="criar" enctype="multipart/form-data" method="post">
+        <form action="criar-end" enctype="multipart/form-data" method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">Rua</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Rua" name="rua">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Rua" placeholder="Rua" name="rua">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">numero</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="numero" name="numero">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="numero" placeholder="numero" name="numero">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">bairro</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="bairro" name="bairro">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="bairro" placeholder="bairro" name="bairro">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">estado</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="estado" name="estado">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="estado" placeholder="estado" name="estado">
             </div>
                         <div class="form-group">
                 <label for="exampleInputEmail1">cep</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="cep" name="cep">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="cep" placeholder="cep" name="cep">
             </div>
 
 

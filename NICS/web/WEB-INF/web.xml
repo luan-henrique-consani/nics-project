@@ -44,6 +44,10 @@
         <servlet-name>CarrinhoController</servlet-name>
         <servlet-class>controller.CarrinhoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EnderecosController</servlet-name>
+        <servlet-class>controller.EnderecosController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -75,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>CarrinhoController</servlet-name>
         <url-pattern>/carrinho</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnderecosController</servlet-name>
+        <url-pattern>/endereco</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
