@@ -8,7 +8,7 @@ nome varchar(45),
 senha varchar(45),
 email varchar(45),
 cpf varchar(14),
-telefone varchar(13)
+telefone varchar(14)
 );
 
 create table endereco(
@@ -88,22 +88,6 @@ CREATE TABLE pedidos (
     FOREIGN KEY (fk_produtos) REFERENCES produtos (id_produtos)
 );
 
-INSERT INTO carrinho (fk_produto, fk_usuario, quantidade, preco) VALUES (2, 3, 2, 400);
-INSERT INTO pedidos (valor, fk_usuario, fk_produtos,data_compra) VALUES (400, 3, 2, now());
-
-SELECT
-    c.id_carrinho,
-    u.nome AS usuario_nome,
-    p.nome_produtos AS produto_nome,
-    p.imagem,
-    c.quantidade,
-    c.preco
-FROM
-    carrinho c
-    INNER JOIN usuario u ON c.fk_usuario = u.id_usuario
-    INNER JOIN produtos p ON c.fk_produto = p.id_produtos where u.id_usuario = 2;
-
-
 SELECT
     pe.id_pedidos,
     u.nome AS usuario_nome,
@@ -117,40 +101,11 @@ FROM
     INNER JOIN usuario u ON pe.fk_usuario = u.id_usuario
     INNER JOIN endereco e ON pe.fk_enderecos = e.id_enderecos
 	INNER JOIN produtos p ON pe.fk_produto = p.id_produtos  where u.id_usuario = 2;
-
+    
+drop table usuario;
 select * from usuario;
 
+alter table usuario modify telefone varchar(15);
 
-DELIMITER $$
-CREATE PROCEDURE enderecos(
-IN rua varchar(45),
-IN numero int(45),
-IN bairro varchar(45),
-IN estado varchar(45),
-IN cep varchar(9),
-IN fk_usuario int
-)
-BEGIN
-INSERT INTO endereco (rua, numero, bairro, estado, cep, fk_usuario) VALUES (rua, numero, bairro, estado,cep,fk_usuario);
-
-set @id = (SELECT MAX(id_enderecos) FROM endereco);
-
-UPDATE usuario SET fk_endereco = @id WHERE id_usuario = @id;
-
-END$$
-DELIMITER ;
-
-call enderecos('Rua Vitório Marandola',88,'H.U','Paraná','86000-000');
-
-SELECT SUM(p.preco * c.quantidade) AS total FROM produtos p INNER JOIN carrinho c ON p.id_produtos = c.fk_produto INNER JOIN usuario u ON c.fk_usuario = u.id_usuario where u.id_usuario = 2;
-select * from usuario;
-
-select * from produtos;
-
-select * from endereco;
-
-SELECT * FROM usuario WHERE id_usuario = 2;
-select * from carrinho;
-
-drop table pedidos;
-drop database nics;
+desc usuario;
+delete from usuario where id_usuario > 1;

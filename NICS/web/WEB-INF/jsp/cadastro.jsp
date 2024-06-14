@@ -14,7 +14,7 @@
             href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
             rel="stylesheet">
         <link rel="stylesheet" href="styles/cadastro.css">
-        <title>JSP Page</title>
+        <title>NICS</title>
     </head>
 
     <body>
@@ -35,15 +35,17 @@
                     </div>
                     <div class="senha">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" placeholder="Sua senha..." name="senha">
+                        <input type="password" placeholder="Sua senha..." name="senha" minlength="8" maxlength="45"  pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,45}$"
+                               title="Deve conter pelo menos um número e uma letra maiúscula, minúscula e caracteres especiais(!@#$... ) e pelo menos 8 caracteres">
+                        
                     </div>
                     <div class="cpf">
                         <i class="fa-solid fa-id-card"></i>
-                        <input type="text" placeholder="000.000.000-00" name="cpf" id="cpf">
+                        <input type="text" placeholder="000.000.000-00" name="cpf" id="cpf" pattern="([0-9]{3}).([0-9]{3}).([0-9]{3})-([0-9]{2})">
                     </div>
                     <div class="telefone">
                         <i class="fa-solid fa-phone"></i>
-                        <input type="text" placeholder="00 00000-0000" name="telefone" id="telefone" pattern="[0-9].{2} [0-9].{5}-[0-9].{4}">
+                        <input type="text" placeholder="(00)00000-0000" name="telefone" id="telefone" pattern="(\([0-9]{2}\)) ([0-9]{5})-([0-9]{4})" minlength="14">
                     </div>
                     <input type="submit" value="Cadastrar-se" class="btn">
                 </form>
