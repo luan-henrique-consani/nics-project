@@ -42,7 +42,7 @@ public class CadastroProdutosController extends HttpServlet {
         CategoriaDAO categoria = new CategoriaDAO();
         List<Categoria> categorias = categoria.leia();
         request.setAttribute("categoria", categorias);
-        String nextPage = "/WEB-INF/jsp/cadProdutos.jsp";
+        String nextPage = "/WEB-INF/jsp/adm.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
 
