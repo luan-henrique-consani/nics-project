@@ -163,4 +163,22 @@ public class ProdutosDAO {
         }
         return produtos;
     }
+        public void deletar(int id) {
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+
+
+            stmt = conexao.prepareStatement("call delete_dois(?)");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+            
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

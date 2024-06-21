@@ -250,7 +250,9 @@ body.dark .sidebar li a:hover .text {
   transition: var(--tran-04);
 }
 
-
+.none{
+  display: none;
+}
 
 .home {
   position: absolute;
@@ -261,7 +263,16 @@ body.dark .sidebar li a:hover .text {
   width: calc(100% - 250px);
   background-color: #fff;
   transition: var(--tran-05);
+  display: flex;
+  justify-content: center;
+
+  text-align: center;
+  
 }
+.active{
+  display: none;
+}
+
 .home .text {
   font-size: 30px;
   font-weight: 500;
@@ -273,4 +284,30 @@ body.dark .sidebar li a:hover .text {
   left: 78px;
   height: 100vh;
   width: calc(100% - 78px);
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  gap: 71px;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.container .formulario{
+  width: 50%;
+  height: 50%;
+}
+.container .listagem{
+
+  width: 50%;
+  height: 50%;
+}
+
+h3{
+  text-align: center;
+}
+#varValue{
+  font-size: 12px;
 }

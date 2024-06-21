@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import model.DAO.CategoriaDAO;
+import model.DAO.EstoqueDAO;
 import model.DAO.ProdutosDAO;
 import model.bean.Categoria;
 import model.bean.Estoque;
@@ -29,7 +30,7 @@ import model.bean.Usuario;
  *
  * @author Senai
  */
-@WebServlet(urlPatterns = "/criar")
+@WebServlet(urlPatterns = {"/criar", "/deletar"})
 @MultipartConfig
 public class CadastroProdutosController extends HttpServlet {
 
@@ -43,6 +44,12 @@ public class CadastroProdutosController extends HttpServlet {
         List<Categoria> categorias = categoria.leia();
         request.setAttribute("categoria", categorias);
         String nextPage = "/WEB-INF/jsp/adm.jsp";
+        ProdutosDAO produto = new ProdutosDAO();
+        List<Produtos> produtos = produto.leia();
+        request.setAttribute("produto", produtos);
+        EstoqueDAO estoque = new EstoqueDAO();
+        List<Estoque> estoques = estoque.leia();
+        request.setAttribute("estoque", estoques);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
 
@@ -51,18 +58,20 @@ public class CadastroProdutosController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                    processRequest(request, response);
+        processRequest(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                String action = request.getServletPath();
+        String action = request.getServletPath();
         if (action.equals("/criar")) {
             produtos(request, response);
+        } else if (action.equals("/deletar")) {
+            deletar(request, response);
         } else {
-
+            processRequest(request, response);
         }
     }
 
@@ -86,8 +95,14 @@ public class CadastroProdutosController extends HttpServlet {
         objEstoque.setVariacao(request.getParameter("var"));
         objProdutosDao.create(objProdutos, objEstoque);
         response.sendRedirect("./cad-prt");
-        
 
+    }
+
+    protected void deletar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        objProdutosDao.deletar(id);
+        response.sendRedirect("./cad-prt");
     }
 
 }
