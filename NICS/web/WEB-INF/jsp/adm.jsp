@@ -105,9 +105,9 @@
                 <tr>
                   <th scope="col">id</th>
                   <th scope="col">nome</th>
-                  <th scope="col">preco</th>
+                  <th scope="col">preço</th>
                   <th scope="col">quantidade</th>
-                  <th scope="col">variacao</th>
+                  <th scope="col">variação</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
