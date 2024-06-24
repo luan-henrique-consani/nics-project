@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import model.bean.Estoque;
 import model.bean.Produtos;
-import model.bean.Usuario;
+import java.util.Locale;
+import java.text.NumberFormat;
 
 /**
  *
@@ -54,6 +55,8 @@ public class ProdutosDAO {
 
             stmt = conexao.prepareStatement("SELECT * FROM produtos");
             rs = stmt.executeQuery();
+            
+            
             while (rs.next()) {
                 Produtos prt = new Produtos();
                 prt.setIdProdutos(rs.getInt("id_produtos"));

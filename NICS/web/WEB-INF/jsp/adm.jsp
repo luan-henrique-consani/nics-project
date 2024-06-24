@@ -88,12 +88,106 @@
 
       <section class="none usuarios home">
         <h3>usuarios</h3>
+        <div class="container">
+          <div class="listagem">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">email</th>
+                  <th scope="col">nome</th>
+                  <th scope="col">telefone</th>
+                  <th scope="col">cpf</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <div class="tabelacorpo">
+                <tbody>
+
+                  <c:forEach items="${usuario}" var="usuarios">
+                    <tr class="linha-contagem">
+                      <th scope="col" id="data-idproduto">${usuarios.idUsuario}</th>
+                      <td class="prtValue">${usuarios.email}</td>
+                      <td class="preValue">${usuarios.nome}</td>
+                      <td class="preValue">${usuarios.telefone}</td>
+                      <td class="preValue">${usuarios.cpf}</td>
+
+                      <form action="deletar-usuarios" enctype="multipart/form-data" method="post">
+                        <input type="hidden" value="${usuarios.idUsuario}" name="id">
+                        <td><button type="submit"><i class="fa-solid fa-trash"></i></button></td>
+                      </form>
+                    </tr>
+                  </c:forEach>
+                </tbody>
+              </div>
+            </table>
+          </div>
+        </div>
       </section>
       <section class="none estoque ">
         <h3>estoque</h3>
+        <div class="container">
+          <div class="listagem">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">quantidade</th>
+                  <th scope="col">variação</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <div class="tabelacorpo">
+                <tbody>
+
+                  <c:forEach items="${estoque}" var="estoques">
+                    <tr class="linha-contagem">
+                      <th scope="col" id="data-idproduto">${estoques.idEstoque}</th>
+                      <td class="prtValue">${estoques.quantidade}</td>
+                      <td class="preValue">${estoques.variacao}</td>
+
+                      <form action="deletar-produtos" enctype="multipart/form-data" method="post">
+                        <input type="hidden" value="${produtos.idProdutos}" name="id">
+                        <td><button type="submit"><i class="fa-solid fa-trash"></i></button></td>
+                      </form>
+                    </tr>
+                  </c:forEach>
+                </tbody>
+              </div>
+            </table>
+          </div>
+       </div>
+
       </section>
       <section class="none categorias">
         <h3>categorias</h3>
+        <div class="container">
+          <div class="listagem">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">nome</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <div class="tabelacorpo">
+                <tbody>
+                  <c:forEach items="${categoria}" var="categorias">
+                    <tr class="linha-contagem">
+                      <th scope="col" id="data-idproduto">${categorias.iCategoria}</th>
+                      <td class="prtValue">${categorias.nomeCategoria}</td>
+                      <form action="deletar-produtos" enctype="multipart/form-data" method="post">
+                        <input type="hidden" value="${produtos.idProdutos}" name="id">
+                        <td><button type="submit"><i class="fa-solid fa-trash"></i></button></td>
+                      </form>
+                    </tr>
+                  </c:forEach>
+                </tbody>
+              </div>
+            </table>
+          </div>
+       </div>
       </section>
       <section class="none produtos">
         <h3>produtos</h3>
@@ -115,15 +209,15 @@
                 <tbody>
 
                   <c:forEach items="${produto}" var="produtos">
-                    <tr>
-                      <th scope="col">${produtos.idProdutos}</th>
-                      <td id="prtValue">${produtos.nomeProdutos}</td>
-                      <td id="preValue">${produtos.preco}</td>
+                    <tr class="linha-contagem">
+                      <th scope="col" id="data-idproduto">${produtos.idProdutos}</th>
+                      <td class="prtValue">${produtos.nomeProdutos}</td>
+                      <td class="preValue">${produtos.preco}</td>
                       <c:forEach items="${estoque}" var="estoques">
-                        <td id="qtdValue">${estoques.quantidade}</td>
-                        <td id="varValue">${estoques.variacao}</td>
+                        <td class="qtdValue">${estoques.quantidade}</td>
+                        <td class="varValue">${estoques.variacao}</td>
                       </c:forEach>
-                      <form action="deletar" enctype="multipart/form-data" method="post">
+                      <form action="deletar-produtos" enctype="multipart/form-data" method="post">
                         <input type="hidden" value="${produtos.idProdutos}" name="id">
                         <td><button type="submit"><i class="fa-solid fa-trash"></i></button></td>
                       </form>
@@ -152,8 +246,8 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Variação</label>
-                <input type="text" class="form-control" id="varPrt" aria-describedby="emailHelp"
-                  placeholder="Variação" name="var">
+                <input type="text" class="form-control" id="varPrt" aria-describedby="emailHelp" placeholder="Variação"
+                  name="var">
               </div>
               <div class="form-group">
                 <input type="file" class="form-control-file" id="exampleFormControlFile1 imagem" name="imagem">

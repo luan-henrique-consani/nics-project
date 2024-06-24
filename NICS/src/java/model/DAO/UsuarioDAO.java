@@ -100,5 +100,34 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+    
+        public List<Usuario> leia2() {
+        List<Usuario> usuario = new ArrayList();
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            stmt = conexao.prepareStatement("SELECT * FROM usuario");
+            rs = stmt.executeQuery();
+            while (rs.next()) {   
+                Usuario usu = new Usuario();
+                usu.setIdUsuario(rs.getInt("id_usuario"));
+                usu.setNome(rs.getString("nome"));
+                usu.setSenha(rs.getString("senha"));
+                usu.setTelefone(rs.getString("telefone"));
+                usu.setCpf(rs.getString("cpf"));
+                usuario.add(usu);
+            }
+
+            rs.close();
+            stmt.close();
+            conexao.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return usuario;
+    }
 
 }

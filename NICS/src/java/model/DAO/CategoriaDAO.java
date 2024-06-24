@@ -44,5 +44,21 @@ public class CategoriaDAO {
         }
         return categoria;
     }
-    
+            public void create(Categoria categoria) {
+        try {
+            Connection conexao = Conexao.conectar();
+            PreparedStatement stmt = null;
+
+            stmt = conexao.prepareCall("INSERT INTO categorias(nome) values(?)");
+            stmt.setString(1, categoria.getNomeCategoria());
+            stmt.executeUpdate();
+
+            stmt.close();
+            conexao.close();
+            System.out.println("deu certo");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

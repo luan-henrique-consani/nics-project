@@ -21,6 +21,7 @@ import javax.servlet.http.Part;
 import model.DAO.CategoriaDAO;
 import model.DAO.EstoqueDAO;
 import model.DAO.ProdutosDAO;
+import model.DAO.UsuarioDAO;
 import model.bean.Categoria;
 import model.bean.Estoque;
 import model.bean.Produtos;
@@ -30,7 +31,7 @@ import model.bean.Usuario;
  *
  * @author Senai
  */
-@WebServlet(urlPatterns = {"/criar", "/deletar"})
+@WebServlet(urlPatterns = {"/criar", "/deletar-produtos","/deletar-usuarios","/deletar-estoque","/deletar-categoria"})
 @MultipartConfig
 public class CadastroProdutosController extends HttpServlet {
 
@@ -50,6 +51,9 @@ public class CadastroProdutosController extends HttpServlet {
         EstoqueDAO estoque = new EstoqueDAO();
         List<Estoque> estoques = estoque.leia();
         request.setAttribute("estoque", estoques);
+        UsuarioDAO usuario = new UsuarioDAO();
+        List<Usuario> usuarios = usuario.leia2();
+        request.setAttribute("usuario", usuarios);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
 
@@ -68,9 +72,12 @@ public class CadastroProdutosController extends HttpServlet {
         String action = request.getServletPath();
         if (action.equals("/criar")) {
             produtos(request, response);
-        } else if (action.equals("/deletar")) {
+        } else if (action.equals("/deletar-produtos")) {
             deletar(request, response);
-        } else {
+        }  else if (action.equals("/deletar-usuarios")) {
+            deletar(request, response);
+        }
+        else {
             processRequest(request, response);
         }
     }

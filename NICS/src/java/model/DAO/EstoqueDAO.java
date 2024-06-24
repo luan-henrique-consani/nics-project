@@ -28,7 +28,7 @@ public class EstoqueDAO {
 
             stmt = conexao.prepareStatement("SELECT * FROM estoque");
             rs = stmt.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 Estoque est = new Estoque();
                 est.setIdEstoque(rs.getInt("id_estoque"));
                 est.setFkProdutos(rs.getInt("fk_produtos"));

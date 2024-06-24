@@ -8,7 +8,7 @@ nome varchar(45),
 senha varchar(45),
 email varchar(45),
 cpf varchar(14),
-telefone varchar(15)
+telefone varchar(14)
 );
 
 create table endereco(
@@ -44,7 +44,7 @@ variacao varchar(45),
 foreign key (fk_produtos) references produtos (id_produtos)
 );
 Insert into categorias(nome_categoria) values('teclado'),('headset'),('earphone'),('microfone'),('smartwatch'),('cellphone'),('mouse');
-insert into usuario(nome, senha, email, cpf ,telefone) values ('admin','Admin123','admin@gmail.com','123.123.123-12','(43) 98765-4321');
+insert into usuario(nome, senha, email, cpf ,telefone) values ('admin','Admin123','admin@gmail.com','123.123.123-12','43 98765-4321');
 DELIMITER $$
 CREATE PROCEDURE INSERT_DOIS(
 IN pr VARCHAR(45),
@@ -61,7 +61,6 @@ set @id = (SELECT MAX(id_produtos) FROM produtos);
 
 INSERT INTO estoque (fk_produtos, quantidade, variacao) VALUES (@id, quantidade, variacao);
 
-select * from usuario;
 
 END$$
 DELIMITER ;
@@ -101,4 +100,110 @@ FROM
     pedidos pe
     INNER JOIN usuario u ON pe.fk_usuario = u.id_usuario
     INNER JOIN endereco e ON pe.fk_enderecos = e.id_enderecos
-	INNER JOIN produtos p ON pe.fk_produto = p.id_produtos  where u.id_usuario = 2;
+    
+DELIMITER $$
+CREATE PROCEDURE DELETE_QUATRO(
+IN id INT
+)
+BEGIN
+delete from produtos where id_produtos = id;
+delete from estoque where fk_produtos = id;
+delete from carrinho where fk_produto = id;
+delete from pedidos where fk_produtos = id;
+END$$
+DELIMITER ;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	INNER JOIN produtos p ON pe.fk_produto = p.id_produtos  where u.id_usuario = 2;FHFHFFGGOP9GIMRHT384YD Y FUYYRT TFUOE6EWRTR62RR63T2	R	6R4YUTR	RUT3E4ET423TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT54YRT4YR5TRW6TE5137637EIUYGFDEMNBVCSAYLTYIUY7GGIÇ´[}}´4567890-7OP555555555555555555555555555555555555555555555555555555555555999999999999999999999999999999999999TTTRFDVVGFGHJGYGY
+    
+drop table usuario;
+select * from usuario;
+JJJJERSRDFDOCEMB FGM.;FDKMFER,GBM,GTNMBETGNM,GBNBMFVDSNFDKJGFKHJJLLIUNC XNCMMMNMBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBKBKKBKKKBKKOJ BV                                                                HYYYYYYY00PPPPPÇÇ~´´LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLVVVVVVVVVVVVVVVVVVVVVVVVWWWWW     TT  JJJKHJNHJHJJFGHHIOP´[]7UIOP´[]]
+~ÇLKJJJHGGGGGGGGGGGGFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFFFFFFFFFFDDDDDDDDDDDDD
+alter table usuario modify telefone varchar(15);
+
+desc usuario;
+delete from usuario where id_usuario > 1;
