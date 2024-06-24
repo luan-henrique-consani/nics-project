@@ -172,7 +172,7 @@ public class ProdutosDAO {
             PreparedStatement stmt = null;
 
 
-            stmt = conexao.prepareStatement("call delete_dois(?)");
+            stmt = conexao.prepareStatement("call delete_tres(?);");
             stmt.setInt(1, id);
             stmt.executeUpdate();
             
