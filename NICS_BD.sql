@@ -81,9 +81,7 @@ CREATE TABLE pedidos (
     valor DECIMAL(10,2),
     fk_usuario INT,
     fk_produtos INT,
-    fk_enderecos INT,
     data_compra DATETIME,
-    FOREIGN KEY (fk_enderecos) REFERENCES endereco (id_enderecos),
     FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario),
     FOREIGN KEY (fk_produtos) REFERENCES produtos (id_produtos)
 );
@@ -112,98 +110,47 @@ delete from carrinho where fk_produto = id;
 delete from pedidos where fk_produtos = id;
 END$$
 DELIMITER ;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-	INNER JOIN produtos p ON pe.fk_produto = p.id_produtos  where u.id_usuario = 2;FHFHFFGGOP9GIMRHT384YD Y FUYYRT TFUOE6EWRTR62RR63T2	R	6R4YUTR	RUT3E4ET423TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT54YRT4YR5TRW6TE5137637EIUYGFDEMNBVCSAYLTYIUY7GGIÇ´[}}´4567890-7OP555555555555555555555555555555555555555555555555555555555555999999999999999999999999999999999999TTTRFDVVGFGHJGYGY
-    
-drop table usuario;
-select * from usuario;
-JJJJERSRDFDOCEMB FGM.;FDKMFER,GBM,GTNMBETGNM,GBNBMFVDSNFDKJGFKHJJLLIUNC XNCMMMNMBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBKBKKBKKKBKKOJ BV                                                                HYYYYYYY00PPPPPÇÇ~´´LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLVVVVVVVVVVVVVVVVVVVVVVVVWWWWW     TT  JJJKHJNHJHJJFGHHIOP´[]7UIOP´[]]
-~ÇLKJJJHGGGGGGGGGGGGFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFFFFFFFFFFDDDDDDDDDDDDD
-alter table usuario modify telefone varchar(15);
 
-desc usuario;
-delete from usuario where id_usuario > 1;
+
+DELIMITER $$
+
+CREATE PROCEDURE InsertEnderecoEPedido (
+    IN p_rua VARCHAR(45),
+    IN p_numero INT,
+    IN p_bairro VARCHAR(45),
+    IN p_estado VARCHAR(45),
+    IN p_cep VARCHAR(9),
+    IN p_fk_usuario INT
+)
+BEGIN
+
+    INSERT INTO endereco (rua, numero, bairro, estado, cep, fk_usuario)
+    VALUES (p_rua, p_numero, p_bairro, p_estado, p_cep, p_fk_usuario);
+
+
+    INSERT INTO pedidos (
+        valor,
+        fk_usuario,
+        fk_produtos,
+        data_compra
+    )
+    SELECT
+        c.preco * c.quantidade,
+        c.fk_usuario,
+        c.fk_produto,
+        NOW()
+    FROM
+        carrinho c
+    WHERE
+        c.fk_usuario = p_fk_usuario;
+
+    -- Remover itens do carrinho após a inserção no pedidos
+    DELETE FROM carrinho WHERE fk_usuario = p_fk_usuario;
+END $$
+
+DELIMITER ;
+
+
+select * from pedidos;
+drop trigger compras;
+DELETE FROM carrinho WHERE id_carrinho = 10;

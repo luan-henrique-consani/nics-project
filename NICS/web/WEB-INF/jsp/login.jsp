@@ -13,11 +13,11 @@
             href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
             rel="stylesheet">
         <link rel="stylesheet" href="styles/login.css">
-        <title>JSP Page</title>
+        <title>NICS</title>
     </head>
     <body>
         <div class="container">
-            <img src="assets/1.png" alt="logo">
+            <img src="assets/nics.png" alt="logo">
             <div class="content">
                 <h2>NICS</h2>
                 <p>Bem-vindo faça uma conta!</p>

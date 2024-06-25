@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -6,6 +7,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
         <title>NICS</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -20,18 +22,19 @@
             <div class="container">
             <c:forEach items="${produto}" var="produtos">
                 <img class="card-img-top" src="data:image/png;base64,${produtos.imgBase64}"
-                alt="${produtos.nomeProdutos}">
+                     alt="${produtos.nomeProdutos}">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">${produtos.nomeProdutos}</h5>
-                        <p>R$ ${produtos.preco}</p>
+                        <fmt:setLocale value="pt-BR"/>
+                        <p><fmt:formatNumber value="${produtos.preco}" type="currency"/></p>
                         <form action="colocar-carrinho" enctype="multipart/form-data" method="post">
                             <input type="hidden" name="fk_produto" id="fk_produto" value="${produtos.idProdutos}">
                             <input type="hidden" name="preco" id="preco" value="${produtos.preco}">
                             <input type="hidden" name="fk_usuario" id="fk_usuario" value="${usuario.idUsuario}">
-                                        <c:forEach items="${estoque}" var="estoques">
-                            <input type="number" name="quantidade" id="quantidade" value="1" min="1" max="${estoques.quantidade}">
-                                        </c:forEach>
+                            <c:forEach items="${estoque}" var="estoques">
+                                <input type="number" name="quantidade" id="quantidade" value="1" min="1" max="${estoques.quantidade}">
+                            </c:forEach>
                             <button type="submit" class="btn"><i class="fa-solid fa-cart-shopping"></i>Comprar</a></button>
                         </form>
                     </div>

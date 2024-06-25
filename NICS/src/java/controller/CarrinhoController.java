@@ -10,6 +10,8 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +29,8 @@ import model.bean.Usuario;
  *
  * @author Luan
  */
+@WebServlet(urlPatterns = {"/deletar"})
+@MultipartConfig
 public class CarrinhoController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -41,15 +45,21 @@ public class CarrinhoController extends HttpServlet {
                 request.setAttribute("usuario", usuario);
             }
         }
-        CategoriaDAO categoria = new CategoriaDAO();
-        List<Categoria> categorias = categoria.leia();
-        request.setAttribute("categoria", categorias);
-        CarrinhoDAO carrinho = new CarrinhoDAO();
-        int usu = Integer.parseInt(request.getParameter("id"));
-        List<Carrinho> carrinhos = carrinho.ler2(usu);
-        request.setAttribute("carrinho", carrinhos);
-        List<Carrinho> carrinhos2 = carrinho.ler3(usu);
-        request.setAttribute("carrinho2", carrinhos2);
+
+        String parametro = request.getParameter("id");
+        if (parametro != null) {
+            int usu = Integer.parseInt(parametro);
+            CategoriaDAO categoria = new CategoriaDAO();
+            List<Categoria> categorias = categoria.leia();
+            request.setAttribute("categoria", categorias);
+            CarrinhoDAO carrinho = new CarrinhoDAO();
+            List<Carrinho> carrinhos = carrinho.ler2(usu);
+            request.setAttribute("carrinho", carrinhos);
+            List<Carrinho> carrinhos2 = carrinho.ler3(usu);
+            request.setAttribute("carrinho2", carrinhos2);
+        }else{
+            
+        }
 
         String nextPage = "/WEB-INF/jsp/carrinho.jsp";
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
@@ -66,6 +76,17 @@ public class CarrinhoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String action = request.getServletPath();
+        if (action.equals("/deletar")) {
+            deletar(request, response);
+        }
+    }
+
+    protected void deletar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int idCarrinho = Integer.parseInt(request.getParameter("idCarrinho"));
+        CarrinhoDAO carrinhoDao = new CarrinhoDAO();
+        carrinhoDao.delete(idCarrinho);
+        response.sendRedirect("./home");
     }
 }

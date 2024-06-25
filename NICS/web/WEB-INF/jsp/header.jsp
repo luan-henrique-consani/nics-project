@@ -34,7 +34,7 @@
                 <div class="baixo">
                     <ul>
                         <c:forEach items="${categoria}" var="categorias">
-                            <li><a href="./cate?id=${categorias.iCategoria}">${categorias.nomeCategoria}</a></li>
+                            <li class="categorias"><a href="./cate?id=${categorias.iCategoria}">${categorias.nomeCategoria}</a></li>
                         </c:forEach>
                     </ul>
                 </div>

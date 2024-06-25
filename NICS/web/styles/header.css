@@ -29,7 +29,7 @@ header {
 .cima h1 {
     font-size: 60px;
     margin: 0;
-    font-family: 'Bungee Shade',sans-serif;
+    font-family: 'Bungee Shade', sans-serif;
     font-weight: 400;
     width: 185px;
     height: 83px;
@@ -62,7 +62,6 @@ header {
     color: #332A28;
     width: 450px;
     background-color: #EDE4E2;
-
 }
 
 .pesquisa button {
@@ -92,12 +91,104 @@ header {
 .baixo ul li {
     margin-right: 15px;
     font-size: 14px;
-    font-family: 'Rubik',sans-serif;
+    font-family: 'Rubik', sans-serif;
     color: #332A28;
 }
-.baixo ul li a{
+
+.baixo ul li a {
     font-size: 14px;
-    font-family: 'Rubik',sans-serif;
+    font-family: 'Rubik', sans-serif;
     color: #332A28;
     text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+    .cima h1 {
+        font-size: 50px;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .pesquisa {
+        width: 400px;
+    }
+
+    .pesquisa input[type="text"] {
+        width: 335px;
+    }
+}
+
+@media (max-width: 800px) and (max-height: 600px) {
+    .cima h1 {
+        font-size: 40px;
+        width: auto;
+        margin-left: 0;
+    }
+    .pesquisa {
+        width: 300px;
+    }
+
+    .pesquisa input[type="text"] {
+        width: 245px;
+    }
+
+    .baixo ul {
+        flex-direction: row;
+        gap: 22px;
+    }
+
+    .baixo ul li {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .cima h1 {
+        font-size: 35px;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .pesquisa {
+        width: 280px;
+    }
+
+    .pesquisa input[type="text"] {
+        width: 220px;
+    }
+
+    .baixo ul {
+        flex-direction: column;
+    }
+
+    .baixo ul li {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .cima h1 {
+        font-size: 30px;
+        width: auto;
+        margin-left: 0;
+    }
+
+    .pesquisa {
+        width: 200px;
+    }
+
+    .pesquisa input[type="text"] {
+        width: 150px;
+    }
+
+    .baixo ul {
+        flex-direction: column;
+    }
+
+    .baixo ul li {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
 }

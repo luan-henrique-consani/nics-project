@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -18,30 +19,33 @@
         <body>
         <main>
             <div class="content">
-            <div class="container">
-            <c:forEach items="${carrinho}" var="carrinhos">
-                <div class="card" style="width: 18rem;">
-                    <div class="img-area">
-                        <img class="card-img-top" src="data:image/png;base64,${carrinhos.imgBase64}"
-                             alt="${carrinhos.nomeProdutos}">
+                <div class="container">
+                <c:forEach items="${carrinho}" var="carrinhos">
+                    <div class="card" style="width: 18rem;">
+                        <div class="img-area">
+                            <img class="card-img-top" src="data:image/png;base64,${carrinhos.imgBase64}"
+                                 alt="${carrinhos.nomeProdutos}">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${carrinhos.nomeProdutos} x${carrinhos.quantidade}</h5>
+                            <fmt:setLocale value="pt-BR"/>
+                            <p><fmt:formatNumber value="${carrinhos.preco}" type="currency"/></p>
+                        </div>
+                        <form action="deletar" enctype="multipart/form-data" method="post">
+                            <input type="hidden" value="${carrinhos.idCarrinho}" name="idCarrinho">
+                            <td><button type="submit"><i class="fa-solid fa-trash"></i></button></td>
+                        </form>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">${carrinhos.nomeProdutos} x${carrinhos.quantidade}</h5>
-                        <p>R$ ${carrinhos.preco}</p>
-                    </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
 
-        </div>
-        <c:forEach items="${carrinho2}" var="carrinhos">
-            <h3>Total: R$ ${carrinhos.preco}
-            </c:forEach>
+            </div>
             <c:forEach items="${carrinho2}" var="carrinhos">
-            <form action="cad-pedi" enctype="multipart/form-data" method="post">
-                <button type="submit" class="btn">Finalizar compra!</button>
-            </form>
-        </c:forEach>
-                
+                <fmt:setLocale value="pt-BR"/>
+                <h3>Total: <fmt:formatNumber value="${carrinhos.preco}" type="currency"/></h3>
+            </c:forEach>
+            <a href="./check?id=${usuario.idUsuario}"><button type="submit" class="btn">Finalizar compra!</button></a>
+
+
 
         </div>
 

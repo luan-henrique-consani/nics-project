@@ -11,9 +11,9 @@ import java.sql.*;
 
 public class Conexao {
 
-    private static final String url = "jdbc:mysql://db4free.net:3306/nics_luan?useSSL=false";
-    private static final String usuario = "senai_lh26";
-    private static final String senha = "luan1234";
+    private static final String url = "jdbc:mysql://localhost:3306/NICS?useSSL=false";
+    private static final String usuario = "root";
+    private static final String senha = "root";
     private static final String driver = "com.mysql.cj.jdbc.Driver";
 
     public static Connection conectar() {

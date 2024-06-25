@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.Enderecos;
+import model.bean.Usuario;
 
 /**
  *
@@ -20,17 +21,18 @@ import model.bean.Enderecos;
  */
 public class EnderecosDAO {
 
-    public void create(Enderecos endereco) {
+    public void create(Enderecos endereco, Usuario usuario) {
         try {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
 
-            stmt = conexao.prepareCall("INSERT INTO endereco(rua, numero, bairro, estado, cep) VALUES (?,?,?,?,?)");
+            stmt = conexao.prepareCall("call InsertEnderecoEPedido(?,?,?,?,?,?)");
             stmt.setString(1, endereco.getRua());
             stmt.setInt(2, endereco.getNumero());
             stmt.setString(3, endereco.getBairro());
             stmt.setString(4, endereco.getEstado());
             stmt.setString(5, endereco.getCep());
+            stmt.setInt(6, usuario.getIdUsuario());
             stmt.executeUpdate();
 
             stmt.close();

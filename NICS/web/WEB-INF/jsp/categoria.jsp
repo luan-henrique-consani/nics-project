@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -18,20 +19,21 @@
         <body>
         <main>
             <div class="container">
-                <c:forEach items="${produto}" var="produtos">
-                    <div class="card" style="width: 18rem;">
-                        <div class="img-area">
-                            <img class="card-img-top" src="data:image/png;base64,${produtos.imgBase64}"
-                                alt="${produtos.nomeProdutos}">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">${produtos.nomeProdutos}</h5>
-                            <p>R$ ${produtos.preco}</p>
-                            <a href="./produtoUni?id=${produtos.idProdutos}" class="btn btn-primary">Visitar</a>
-                        </div>
+            <c:forEach items="${produto}" var="produtos">
+                <div class="card" style="width: 18rem;">
+                    <div class="img-area">
+                        <img class="card-img-top" src="data:image/png;base64,${produtos.imgBase64}"
+                             alt="${produtos.nomeProdutos}">
                     </div>
-                </c:forEach>
-            </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${produtos.nomeProdutos}</h5>
+                        <fmt:setLocale value="pt-BR"/>
+                        <p><fmt:formatNumber value="${produtos.preco}" type="currency"/></p>
+                        <a href="./produtoUni?id=${produtos.idProdutos}" class="btn btn-primary">Visitar</a>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
 
 
     </main>

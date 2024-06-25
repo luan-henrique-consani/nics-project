@@ -4,12 +4,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadatro de produtos</title>
+        <title>Cadatro de endereços</title>
+        <jsp:include page="header.jsp"></jsp:include>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
     </head>
     <body>
-        <form action="criar-end" enctype="multipart/form-data" method="post">
+        <form action="criar-endereco" enctype="multipart/form-data" method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">Rua</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="Rua" placeholder="Rua" name="rua">
@@ -30,11 +32,10 @@
                 <label for="exampleInputEmail1">cep</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="cep" placeholder="cep" name="cep">
             </div>
-
-
-
+             <input type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="idUsuario" value="${usuario.idUsuario}" name="idUsuario">
 
             <input type="submit" value="Enviar">
         </form>    
+            <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

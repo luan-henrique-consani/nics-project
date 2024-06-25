@@ -31,7 +31,7 @@ import model.bean.Usuario;
  *
  * @author Senai
  */
-@WebServlet(urlPatterns = {"/criar", "/deletar-produtos","/deletar-usuarios","/deletar-estoque","/deletar-categoria"})
+@WebServlet(urlPatterns = {"/criar", "/deletar-produtos"})
 @MultipartConfig
 public class CadastroProdutosController extends HttpServlet {
 
@@ -51,6 +51,8 @@ public class CadastroProdutosController extends HttpServlet {
         EstoqueDAO estoque = new EstoqueDAO();
         List<Estoque> estoques = estoque.leia();
         request.setAttribute("estoque", estoques);
+        List<Estoque> estoques2 = estoque.leia2();
+        request.setAttribute("estoque2", estoques2);
         UsuarioDAO usuario = new UsuarioDAO();
         List<Usuario> usuarios = usuario.leia2();
         request.setAttribute("usuario", usuarios);
@@ -73,8 +75,6 @@ public class CadastroProdutosController extends HttpServlet {
         if (action.equals("/criar")) {
             produtos(request, response);
         } else if (action.equals("/deletar-produtos")) {
-            deletar(request, response);
-        }  else if (action.equals("/deletar-usuarios")) {
             deletar(request, response);
         }
         else {

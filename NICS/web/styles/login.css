@@ -100,3 +100,22 @@ img{
 .content .email{
     margin-bottom: 40px;
 }
+@media (max-width: 800px) and (max-height: 600px) {
+    .container {
+        grid-template-areas: 
+            "cont"; 
+    }
+
+    img {
+        display: none;
+    }
+
+    .content {
+        width: 100%; 
+        height: auto; 
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        margin-top: 20px;
+    }
+}

@@ -19,7 +19,7 @@
 
     <body>
         <div class="container">
-            <img src="assets/1.png" alt="logo">
+             <img src="assets/nics.png" alt="logo">
             <div class="content">
                 <h2>NICS
                 </h2>

@@ -114,6 +114,7 @@ public class UsuarioDAO {
                 Usuario usu = new Usuario();
                 usu.setIdUsuario(rs.getInt("id_usuario"));
                 usu.setNome(rs.getString("nome"));
+                usu.setEmail(rs.getString("email"));
                 usu.setSenha(rs.getString("senha"));
                 usu.setTelefone(rs.getString("telefone"));
                 usu.setCpf(rs.getString("cpf"));

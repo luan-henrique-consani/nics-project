@@ -48,6 +48,10 @@
         <servlet-name>EnderecosController</servlet-name>
         <servlet-class>controller.EnderecosController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckoutController</servlet-name>
+        <servlet-class>controller.CheckoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -83,6 +87,10 @@
     <servlet-mapping>
         <servlet-name>EnderecosController</servlet-name>
         <url-pattern>/endereco</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutController</servlet-name>
+        <url-pattern>/check</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
